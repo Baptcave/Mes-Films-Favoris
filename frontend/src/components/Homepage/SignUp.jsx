@@ -16,7 +16,7 @@ function SignUp() {
 
     return (
         <div>
-            <button type="button">M'inscrire'</button>
+            <button type="button">M'inscrire</button>
             <form>
                 <div>
                     <input onChange={handleChange} type="text" name="firstname" id="firstname" placeholder='Prénom' />

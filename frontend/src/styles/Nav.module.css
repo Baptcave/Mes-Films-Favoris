@@ -1,0 +1,17 @@
+.navBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.buttonsWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 35%;
+}

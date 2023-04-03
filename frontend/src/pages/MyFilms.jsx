@@ -1,8 +1,12 @@
 import React from 'react';
+import Nav from '../components/Nav';
 
 function MyFilms() {
   return (
-    <div>MyFilms</div>
+    <div>
+      <Nav />
+      <p>MyFilms</p>
+    </div>
   )
 };
 

@@ -1,8 +1,12 @@
 import React from 'react';
+import Nav from '../components/Nav';
 
 function Search() {
   return (
-    <div>Search</div>
+    <div>
+      <Nav />
+      <p>Search</p>
+    </div>
   )
 };
 
