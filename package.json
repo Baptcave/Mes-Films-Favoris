@@ -1,0 +1,30 @@
+{
+  "description": "Project made for checkpoint 4 at Wild Code School",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baptcave/Mes-Films-Favoris.git"
+  },
+  "config": {
+    "cli": "npm"
+  },
+  "scripts": {
+    "migrate": "cd ./backend && node migrate.js",
+    "dev": "cross-env-shell 'concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"$npm_package_config_cli:dev-*\"'",
+    "dev-front": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run dev\"",
+    "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_cli run dev\""
+  },
+  "author": "Baptiste",
+  "dependencies": {
+    "concurrently": "^8.0.1",
+    "cross-env": "^7.0.3"
+  },
+  "name": "mes-films-favoris",
+  "bugs": {
+    "url": "https://github.com/Baptcave/Mes-Films-Favoris/issues"
+  },
+  "homepage": "https://github.com/Baptcave/Mes-Films-Favoris#readme",
+  "version": "1.0.0",
+  "main": "frontend/index.html",
+  "devDependencies": {},
+  "license": "MIT"
+}
