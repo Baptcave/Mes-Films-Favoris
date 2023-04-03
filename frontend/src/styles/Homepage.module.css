@@ -1,0 +1,9 @@
+.title {
+    text-align: center;
+}
+
+.buttonsWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
