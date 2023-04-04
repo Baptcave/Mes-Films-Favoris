@@ -23,5 +23,6 @@ router.get("/users", userControllers.browse);
 
 router.post("/movies", movieControllers.add);
 router.get("/movies/:id", movieControllers.browse);
+router.put("/movies/:id", movieControllers.edit);
 
 module.exports = router;

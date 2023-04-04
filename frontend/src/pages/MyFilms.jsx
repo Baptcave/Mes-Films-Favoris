@@ -22,7 +22,6 @@ function MyFilms() {
   const key = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    console.log(userId);
     filmAPI
       .get(`/movies/${userId}`)
       .then((res) => {
@@ -30,7 +29,7 @@ function MyFilms() {
         setMovies(res.data);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [beingModified]);
 
   const handleOneMovie = (e) => {
     const movieId = parseInt(e.target.id, 10);
@@ -47,7 +46,7 @@ function MyFilms() {
       <div className={styles.gridContainer}>
         <SearchMine userId={userId} handleOneMovie={handleOneMovie} movies={movies} />
         {Object.keys(movieSelected).length !== 0 && <MyMovieSelected movie={movieSelected} />}
-        {Object.keys(movieSelected).length !== 0 && beingModified && <ModifyComment movie={movieSelected} setBeingModified={setBeingModified} />}
+        {Object.keys(movieSelected).length !== 0 && beingModified && <ModifyComment movie={movieSelected} setBeingModified={setBeingModified} setMovieSelected={setMovieSelected} />}
         {Object.keys(movieSelected).length !== 0 && !beingModified && <MyComment movie={movieSelected} handleModify={handleModify} />}
       </div>
     </div>
