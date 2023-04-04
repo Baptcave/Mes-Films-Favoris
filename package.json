@@ -5,18 +5,19 @@
     "url": "git+https://github.com/Baptcave/Mes-Films-Favoris.git"
   },
   "config": {
-    "cli": "npm"
+    "cli": "npm",
+    "glo": "npx"
   },
   "scripts": {
     "migrate": "cd ./backend && node migrate.js",
     "dev": "cross-env-shell 'concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"$npm_package_config_cli:dev-*\"'",
     "dev-front": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run dev\"",
-    "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_cli run dev\"",
+    "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_glo nodemon index.js\"",
     "lint": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run lint && cd ../backend && $npm_package_config_cli run lint\"",
     "fix": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run fix && cd ../backend && $npm_package_config_cli run fix\""
   },
   "author": "Baptiste",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3"
   },
@@ -27,6 +28,5 @@
   "homepage": "https://github.com/Baptcave/Mes-Films-Favoris#readme",
   "version": "1.0.0",
   "main": "frontend/index.html",
-  "devDependencies": {},
   "license": "MIT"
 }
