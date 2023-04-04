@@ -36,4 +36,14 @@ const insertMovieIntoUserHasMovie = async (myMovieComment, movieId) => {
     }
 }
 
-module.exports = { insertMovieIntoMovie, insertMovieIntoUserHasMovie };
+const findAll = async (userId) => {
+    try {
+        const [movies] = await db.query("SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_user = ?;", [userId]);
+
+        return movies;
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+module.exports = { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll };
