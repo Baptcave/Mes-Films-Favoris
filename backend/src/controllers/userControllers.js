@@ -16,7 +16,11 @@ const add = async (req, res) => {
 
         const result = await insert(user);
 
-        res.status(201).send(result);
+        if (result) {
+            res.status(201).send(result);
+        } else {
+            res.status(500).send("Problem creating new user");
+        }
     } catch(e) {
         res.sendStatus(500);
     }

@@ -15,9 +15,9 @@ const login = async (req, res) => {
 
     const token = encodeJWT(user);
 
-    res.cookie("auth_token", token, { hhtpOnly: true, secure: false });
+    res.cookie("auth_token", token, { httpOnly: true, secure: false, });
 
-    res.status(200).json({userId: user.id});
+    res.status(200).json({userId: user.id, firstname: user.firstname});
 };
 
 const logout = async (req, res) => {
