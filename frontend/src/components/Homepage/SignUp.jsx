@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import filmAPI from "../../services/filmAPI";
 import { toastError, toastValidation } from "../../services/toastService";
 
@@ -25,10 +25,6 @@ function SignUp() {
         toastError("Vous n'avez rentré aucune information...")
     }
   };
-
-//   useEffect(() => {
-//     console.log("user", user);
-//   }, [user]);
 
   return (
     <div>

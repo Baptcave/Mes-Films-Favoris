@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import filmAPI from "../../services/filmAPI";
+import { useUserContext } from "../../contexts/UserContext";
+
 import { toastError, toastValidation } from "../../services/toastService";
 
 function Login() {
+  const { setUserId } = useUserContext();
+
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,6 +19,7 @@ function Login() {
       filmAPI.post("/login", { mail, password })
         .then((res) => {
           const firstname = res.data.firstname;
+          setUserId(res.data.userId);
           navigate('/search');
           toastValidation(`Bienvenue ${firstname} !`);
         })
