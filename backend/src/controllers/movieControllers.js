@@ -1,4 +1,4 @@
-const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll } = require("../models/movieHandler.js");
+const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne } = require("../models/movieHandler.js");
 
 const browse = async (req, res) => {
     try {
@@ -32,5 +32,24 @@ const add = async (req, res) => {
     }
 };
 
+const edit = async (req, res) => {
+    try {
+        const userHasMovieId = req.params.id;
+        const movieUpdate = req.body; 
 
-module.exports = { add, browse };
+        const result = await update(movieUpdate, userHasMovieId);
+        
+        if (result) {
+            const [movie] = await findOne(movieUpdate.id_movie);
+
+            res.status(201).send(movie);
+        } else {
+            res.status(500).send("Problem updating movie");
+        }
+    } catch(e) {
+        res.status(500).send(e);
+    }
+};
+
+
+module.exports = { add, browse, edit };

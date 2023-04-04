@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import filmAPI from "../../services/filmAPI";
+
 import styles from "../../styles/MyComment.module.css";
 
-function ModifyComment({movie, setBeingModified}) {
+function ModifyComment({movie, setBeingModified, setMovieSelected}) {
   const [myComments, setMyComments] = useState("");
 
     const handleChange = (e) => {
@@ -9,8 +11,18 @@ function ModifyComment({movie, setBeingModified}) {
       };
 
       const handleSaveChanges = () => {
+        const movieId = movie.id_movie;
+        const movieUpdate = {...myComments, id_movie: movieId};
+        filmAPI.put(`/movies/${movie.id}`, movieUpdate)
+          .then((res) => setMovieSelected(res.data))
+          .catch((err) => console.error(err))
+
         setBeingModified((prev) => !prev);
       };
+
+      useEffect(() => {
+        console.log(myComments);
+      }, [myComments]);
 
   return (
     <div className={styles.allContainer}>
@@ -43,7 +55,7 @@ function ModifyComment({movie, setBeingModified}) {
           placeholder="Votre note sur 10"/>
         <label htmlFor="comment">Qu'avez-vous ressenti ?</label>
         <textarea className={styles.textarea} name="comment" id="comment" placeholder={movie.comment} onChange={handleChange}/>
-        <button type="button" onClick={handleSaveChanges}>Enregistrer</button>
+        <button type="button" onClick={handleSaveChanges}>Enregistrer les modifications</button>
       </div>
     </div>
   );

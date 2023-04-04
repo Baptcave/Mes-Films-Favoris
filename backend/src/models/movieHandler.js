@@ -46,4 +46,31 @@ const findAll = async (userId) => {
     }
 }
 
-module.exports = { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll };
+const update = async (movie, id) => {
+    try {
+    const [result] = await db.query("UPDATE `user_has_movies` SET date_seen = ?, mode_seen = ?, my_note = ?, comment = ? WHERE id = ?",
+    [
+        movie.date_seen,
+        movie.mode_seen,
+        movie.my_note,
+        movie.comment,
+        id
+    ]);
+
+    return result;
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+const findOne = async (id) => {
+    try {
+        const [movie] = await db.query("SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_movie = ?;", [id]);
+
+        return movie;
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+module.exports = { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne };
