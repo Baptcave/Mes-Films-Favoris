@@ -1,0 +1,9 @@
+.allContainer {
+    grid-column: span 1;
+}
+
+.card {
+    background-color: #efc4f7;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
