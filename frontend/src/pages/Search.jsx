@@ -39,7 +39,7 @@ function Search() {
           toastError("Oupsi ! Êtes-vous sûr de vos informations ?");
         });
     } else {
-        toastError("Vous n'avez rien sélectionné")
+        toastError("Vous n'avez rien sélectionné");
     }
   };
 

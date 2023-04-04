@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import filmAPI from "../services/filmAPI";
 import { toastError, toastValidation } from "../services/toastService";
 
-// import { useUserContext } from "../contexts/UserContext";
 import styles from "../styles/MyFilmsPage.module.css";
 
 import Nav from "../components/Nav";
@@ -13,7 +12,6 @@ import MyComment from "../components/MyFilms/MyComment";
 import ConfirmDelete from "../components/MyFilms/ConfirmDelete";
 
 function MyFilms() {
-  // const { userId } = useUserContext();
   const userId = JSON.parse(localStorage.getItem("userId"));
 
   const [movies, setMovies] = useState([]);
