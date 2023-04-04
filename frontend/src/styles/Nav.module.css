@@ -2,6 +2,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
+}
+
+.logoContainer {
+    background-color : transparent;
+    border : 0;
+    border-style : none;
+    outline-style : none;
+    outline : 0;
 }
 
 .logo {
@@ -14,4 +23,11 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 35%;
+}
+
+.fakeDiv {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 2;
 }
