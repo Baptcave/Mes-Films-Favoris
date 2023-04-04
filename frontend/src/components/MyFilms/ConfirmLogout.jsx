@@ -1,13 +1,18 @@
 import React from 'react';
+import styles from "../../styles/Confirm.module.css";
 
 function ConfirmDelete({handleToggleLogout, confirmLogout}) {
   return (
-    <div>
-        <p>Vous allez vous déconnecter.</p>
+    <div className={styles.globalContainer}>
+      <div className={styles.cardContainer}>
+        <p>Vous allez vous déconnecter</p>
         <p>Êtes-vous sûr.e de vouloir vous déconnecter ?</p>
         <p>Cette action est irréversible</p>
-        <button type="button" onClick={handleToggleLogout}>Annuler</button>
-        <button type="button" onClick={confirmLogout}>Je veux me déconnecter</button>
+        <div className={styles.buttonsContainer}>
+        <button className={styles.validateButton} type="button" onClick={handleToggleLogout}>Annuler</button>
+        <button className={styles.cancelButton} type="button" onClick={confirmLogout}>Je veux me déconnecter</button>
+        </div>
+      </div>
     </div>
   )
 };

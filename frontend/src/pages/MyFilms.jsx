@@ -20,8 +20,6 @@ function MyFilms() {
   const [confirmDeleteIsDisplay, setConfirmDeleteIsDisplay] = useState(false);
   const [movieToDelete, setMovieToDelete] = useState(null);
 
-  const key = import.meta.env.VITE_API_KEY;
-
   useEffect(() => {
     filmAPI
       .get(`/movies/${userId}`)

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import filmAPI from "../../services/filmAPI";
 import { useUserContext } from "../../contexts/UserContext";
+import styles from "../../styles/Sign.module.css";
 
 import { toastError, toastValidation } from "../../services/toastService";
 
@@ -38,7 +39,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className={styles.globalContainer}>
       <button type="button">Me Connecter</button>
       <form>
         <div>
@@ -47,7 +48,9 @@ function Login() {
         <div>
           <input onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" placeholder="mot de passe" />
         </div>
+        <div className={styles.letGoContainer}>
         <button type="button" onClick={handleSubmit}>Connexion</button>
+        </div>
       </form>
     </div>
   )
