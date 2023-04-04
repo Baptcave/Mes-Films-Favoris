@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import filmAPI from "../../services/filmAPI";
+import { toastError, toastValidation } from "../../services/toastService";
 
 import styles from "../../styles/MyComment.module.css";
 
 function ModifyComment({movie, setBeingModified, setMovieSelected}) {
   const [myComments, setMyComments] = useState("");
 
-    const handleChange = (e) => {
-        setMyComments({ ...myComments, [e.target.name]: e.target.value });
-      };
+  const handleChange = (e) => {
+      setMyComments({ ...myComments, [e.target.name]: e.target.value });
+  };
 
-      const handleSaveChanges = () => {
-        const movieId = movie.id_movie;
-        const movieUpdate = {...myComments, id_movie: movieId};
-        filmAPI.put(`/movies/${movie.id}`, movieUpdate)
-          .then((res) => setMovieSelected(res.data))
-          .catch((err) => console.error(err))
-
+  const handleSaveChanges = () => {
+    const movieId = movie.id_movie;
+    const movieUpdate = {...myComments, id_movie: movieId};
+    filmAPI.put(`/movies/${movie.id}`, movieUpdate)
+      .then((res) => {
+        setMovieSelected(res.data);
+        toastValidation("Vos impressions ont bien été modifiées ✌️");
         setBeingModified((prev) => !prev);
-      };
-
-      useEffect(() => {
-        console.log(myComments);
-      }, [myComments]);
+      })
+      .catch((err) => {
+        console.error(err);
+        toastError("Oupsi... Les petites souris ont grignoté les câbles... 🐭");
+      })
+  };
 
   return (
     <div className={styles.allContainer}>

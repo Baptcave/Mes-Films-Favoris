@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import filmAPI from "../services/filmAPI";
-import { useUserContext } from "../contexts/UserContext";
 import { toastError, toastValidation } from "../services/toastService";
 
 import Nav from '../components/Nav';
@@ -11,7 +10,7 @@ import Comment from '../components/Search/Comment';
 import styles from "../styles/SearchPage.module.css"
 
 function Search() {
-  const { userId } = useUserContext();
+  const userId = JSON.parse(localStorage.getItem("userId"));
 
   const [movieSelected, setMovieSelected] = useState({});
   const [myComments, setMyComments] = useState({});

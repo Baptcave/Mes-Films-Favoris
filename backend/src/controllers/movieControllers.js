@@ -1,4 +1,4 @@
-const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne } = require("../models/movieHandler.js");
+const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies } = require("../models/movieHandler.js");
 
 const browse = async (req, res) => {
     try {
@@ -51,5 +51,21 @@ const edit = async (req, res) => {
     }
 };
 
+const remove = async (req, res) => {
+    try {
+        const movieId = parseInt(req.params.id, 10);
 
-module.exports = { add, browse, edit };
+        const [userHasMoviesResult] = await eraseFromUserHasMovies(movieId);
+
+        if (userHasMoviesResult.affectedRows === 0) {
+            res.sendStatus(404);
+        } else {
+            const [movieResult] = await eraseFromMovies(movieId);
+            res.status(204).send("the movie has been deleted");
+        }
+    } catch(e) {
+        res.status(500).send(e);
+    }
+};
+
+module.exports = { add, browse, edit, remove };

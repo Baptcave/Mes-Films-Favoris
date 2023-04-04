@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/MyComment.module.css";
 
-function MyComment({movie, handleModify}) {
+function MyComment({movie, handleModify, handleToggleDelete}) {
 
   return (
     <div className={styles.allContainer}>
@@ -15,6 +15,7 @@ function MyComment({movie, handleModify}) {
         <p>Vous en avez pensé ceci :</p>
         <p>{movie.comment}</p>
         <button type="button" onClick={handleModify}>Modifier</button>
+        <button type="button" onClick={handleToggleDelete} id={movie.id_movie}>Supprimer</button>
       </div>
     </div>
   );

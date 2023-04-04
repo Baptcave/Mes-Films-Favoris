@@ -1,3 +1,24 @@
+.globalContainer {
+    position: relative;
+    width: 100vw;
+}
+
+.navbar {
+    width: 100vw;
+}
+
+.fakeDiv {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 2;
+}
+
+.underConfirmDelete {
+    position: absolute;
+    z-index: 0;
+}
+
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
