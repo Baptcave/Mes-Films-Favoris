@@ -20,6 +20,7 @@ function Login() {
         .then((res) => {
           const firstname = res.data.firstname;
           setUserId(res.data.userId);
+          localStorage.setItem('userId', JSON.stringify(res.data.userId));
           navigate('/search');
           toastValidation(`Bienvenue ${firstname} !`);
         })

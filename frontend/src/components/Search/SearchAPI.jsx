@@ -15,7 +15,6 @@ function SearchAPI({handleOneMovie}) {
   const handleMovies = () => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=fr-FR&query=${query}&page=1&include_adult=false`)
     .then((res) => {
-      // console.log("Movies gotten", res.data.results);
       setMovies(res.data.results);
     })
     .catch((err) => console.error(err))
