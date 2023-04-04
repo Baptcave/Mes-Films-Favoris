@@ -1,4 +1,6 @@
 import React from "react";
+import formateDate from "../../services/dateFormat";
+
 import styles from "../../styles/MyComment.module.css";
 
 function MyComment({movie, handleModify, handleToggleDelete}) {
@@ -7,7 +9,7 @@ function MyComment({movie, handleModify, handleToggleDelete}) {
     <div className={styles.allContainer}>
       <div className={styles.card}>
         <p>Vous l'avez vu le :</p>
-        <p>{movie.date_seen}</p>
+        <p>{formateDate(movie.date_seen)}</p>
         <p>Vous l'avez regardé sur :</p>
         <p>{movie.mode_seen}</p>
         <p>Votre note : </p>
