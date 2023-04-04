@@ -73,4 +73,24 @@ const findOne = async (id) => {
     }
 }
 
-module.exports = { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne };
+const eraseFromUserHasMovies = async (id) => {
+    try {
+        const result = await db.query("DELETE FROM `user_has_movies` AS um WHERE um.id_movie = ?", [id]);
+
+        return result;
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+const eraseFromMovies = async (id) => {
+    try {
+        const result = await db.query("DELETE FROM `movie` WHERE id = ?;", [id]);
+
+        return result;
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+module.exports = { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies };
