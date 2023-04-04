@@ -12,6 +12,7 @@ router.post("/login", authControllers.login);
 router.get("/logout", authControllers.logout);
 
 const userControllers = require("./controllers/userControllers");
+const movieControllers = require("./controllers/movieControllers");
 
 router.post("/users", hashPassword, userControllers.add);
 
@@ -19,5 +20,7 @@ router.post("/users", hashPassword, userControllers.add);
 router.use(verifyToken);
 
 router.get("/users", userControllers.browse);
+
+router.post("/movies", movieControllers.add);
 
 module.exports = router;

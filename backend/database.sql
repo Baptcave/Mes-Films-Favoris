@@ -27,11 +27,12 @@ CREATE TABLE IF NOT EXISTS `films`.`movie` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title_fr` VARCHAR(150) NOT NULL,
   `length` INT(11) NOT NULL,
-  `year` INT(11) NOT NULL,
-  `director` VARCHAR(80) NOT NULL,
-  `cast` TEXT NOT NULL,
+  `year` VARCHAR(45) NOT NULL,
+  `director` VARCHAR(80),
+  `cast` TEXT,
   `imdb_note` DECIMAL(2,0) NOT NULL,
   `poster` VARCHAR(255) NULL DEFAULT NULL,
+  `resume` TEXT,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

@@ -1,49 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import styles from '../../styles/Comment.module.css';
+import React from "react";
+import styles from "../../styles/Comment.module.css";
 
-function Comment() {
-    const [date, setDate] = useState("");
-    const [modeSeen, setModeSeen] = useState("");
-    const [myComments, setMyComments] = useState({});
+function Comment({myComments, setMyComments, handleClick}) {
+    const handleChange = (e) => {
+        setMyComments({ ...myComments, [e.target.name]: e.target.value });
+      };
 
-    const handleDate = (e) => {
-setDate(e.target.value);
-    };
-
-    const handleSelect = (e) => {
-        setModeSeen(e.target.value);
-        setMyComments({...myComments, mode_seen: e.target.value})
-    };
-
-    useEffect(() => {
-        console.log(modeSeen);
-    }, [modeSeen]);
-
-    useEffect(() => {
-        console.log(myComments);
-    }, [myComments]);
-
-    useEffect(() => {
-        console.log(date);
-    }, [date]);
   return (
     <div className={styles.allContainer}>
-        <div className={styles.card}>
+      <div className={styles.card}>
+        <label htmlFor="date_seen">Quand l'avez-vous vu ?</label>
         <input
-        onChange={handleDate}
-        type="date"
-        name="date_seen"
-        id="date_seen"/>
-        <select value={modeSeen} onChange={handleSelect}>
-            <option selected value="Cinéma">Cinéma</option>
-            <option value="Télévision">Télévision</option>
-            <option value="Ordinateur">Ordinateur</option>
-            <option value="Smartphone">Smartphone (Vous me dégoûtez...)</option>
+          onChange={handleChange}
+          type="date"
+          name="date_seen"
+          id="date_seen"
+        />
+        <label htmlFor="mode_seen">Comment l'avez-vous vu ?</label>
+        <select defaultValue="" name="mode_seen" onChange={handleChange}>
+        <option value="">---</option>
+          <option value="Cinéma">
+            Cinéma
+          </option>
+          <option value="Télévision">Télévision</option>
+          <option value="Ordinateur">Ordinateur</option>
+          <option value="Smartphone">Smartphone (Vous me dégoûtez...)</option>
         </select>
-        <label>Ajoutez une note sur 10</label>
-        </div>
+        <label htmlFor="my_note">Comment l'avez-vous apprécié ?</label>
+        <input onChange={handleChange}
+          type="text"
+          name="my_note"
+          id="my_note"
+          placeholder="Votre note sur 10"/>
+        <label htmlFor="comment">Qu'avez-vous ressenti ?</label>
+        <textarea className={styles.textarea} name="comment" id="comment" placeholder="Comment avez-vous trouvé ce film ?" onChange={handleChange}/>
+        <button type="button" onClick={handleClick}>Valider</button>
+      </div>
     </div>
-  )
-};
+  );
+}
 
 export default Comment;
