@@ -12,7 +12,7 @@ function MyMovieSelected({movie}) {
             <p>Titre : {movie.title_fr}</p>
             <p>Date de sortie : {movie.year}</p>
             <p>Durée : {movie.length} minutes</p>
-            <p>Ma Note : {movie.my_note} / 10</p>
+            <p>Note imdb : {movie.imdb_note} / 10</p>
             <p>Résumé : {movie.resume}</p>
         </div>
     </div>

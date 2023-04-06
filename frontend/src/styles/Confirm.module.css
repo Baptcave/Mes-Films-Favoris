@@ -1,0 +1,58 @@
+.globalContainer {
+    position: absolute;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(254, 254, 254, 0.617);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.buttonsContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.validateButton {
+    background-color : rgb(156, 226, 212);
+    border : 0;
+    border-style : none;
+    border-radius: 4px;
+    outline-style : none;
+    outline : 0;
+    line-height: 1.5rem;
+    padding: 3px 3px;
+}
+
+.validateButton:hover {
+    background-color : rgb(185, 254, 241);
+}
+
+.cancelButton {
+    background-color : rgb(191, 169, 211);
+    border : 0;
+    border-style : none;
+    outline-style : none;
+    border-radius: 4px;
+    outline : 0;
+    line-height: 1.5rem;
+    padding: 3px 3px;
+}
+
+.cancelButton:hover {
+    background-color : rgb(230, 212, 247);
+}

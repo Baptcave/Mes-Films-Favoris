@@ -1,12 +1,17 @@
 import React from 'react';
+import styles from "../../styles/Confirm.module.css";
 
 function ConfirmDelete({handleToggleDelete, confirmSuppression}) {
   return (
-    <div>
+    <div className={styles.globalContainer}>
+      <div className={styles.cardContainer}>
         <p>Êtes-vous sûr.e d vouloir supprimer ce film ?</p>
         <p>Cette action est irréversible</p>
-        <button type="button" onClick={handleToggleDelete}>Annuler</button>
-        <button type="button" onClick={confirmSuppression}>Confirmer la suppression</button>
+        <div className={styles.buttonsContainer}>
+        <button className={styles.validateButton} type="button" onClick={confirmSuppression}>Confirmer la suppression</button>
+        <button className={styles.cancelButton} type="button" onClick={handleToggleDelete}>Annuler</button>
+        </div>
+        </div>
     </div>
   )
 };

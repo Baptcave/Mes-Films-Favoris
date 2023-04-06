@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import filmAPI from "../../services/filmAPI";
 import { toastError, toastValidation } from "../../services/toastService";
+import styles from "../../styles/Sign.module.css";
 
 function SignUp() {
   const [user, setUser] = useState({});
@@ -27,7 +28,7 @@ function SignUp() {
   };
 
   return (
-    <div>
+    <div className={styles.globalContainer}>
       <button type="button">M'inscrire</button>
       <form>
         <div>
@@ -102,9 +103,9 @@ function SignUp() {
             placeholder="Confirmez votre mot de passe"
           />
         </div>
-        <button type="button" onClick={handleSubmit}>
-          Let's Go
-        </button>
+        <div className={styles.letGoContainer}>
+        <button type="button" onClick={handleSubmit}>Let's Go</button>
+        </div>
       </form>
     </div>
   );

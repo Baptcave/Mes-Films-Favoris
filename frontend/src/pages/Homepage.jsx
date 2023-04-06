@@ -5,9 +5,11 @@ import styles from "../styles/Homepage.module.css";
 
 function Homepage() {
   return (
-    <div>
-      <h1 className={styles.title}>Mes Films Favoris</h1>
-      <div className={styles.buttonsWrap} >
+    <div className={styles.globalContainer}>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.title}>Mes Films Favoris</h1>
+      </div>
+      <div className={styles.buttonsWrap}>
         <SignUp />
         <Login />
       </div>
