@@ -15,7 +15,6 @@ const movieControllers = require("./controllers/movieControllers");
 
 router.post("/users", hashPassword, userControllers.add);
 
-// Protected routes
 router.use(verifyToken);
 
 router.get("/users", userControllers.browse);
