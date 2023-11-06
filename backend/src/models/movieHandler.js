@@ -2,7 +2,8 @@ const db = require("./db.js");
 
 const insertMovieIntoMovie = async (myMovieComment) => {
     try {
-        const [result] = await db.query("INSERT INTO `movie` (title_fr, length, year, imdb_note, poster, resume) VALUES (?, ?, ?, ?, ?, ?)", 
+        const [result] = await db.query(
+            "INSERT INTO `movie` (title_fr, length, year, imdb_note, poster, resume) VALUES (?, ?, ?, ?, ?, ?)", 
         [
             myMovieComment.title, 
             myMovieComment.runtime,
@@ -20,7 +21,8 @@ const insertMovieIntoMovie = async (myMovieComment) => {
 
 const insertMovieIntoUserHasMovie = async (myMovieComment, movieId) => {
     try {
-        const [result] = await db.query("INSERT INTO `user_has_movies` (date_seen, mode_seen, my_note, comment, id_user, id_movie) VALUES (?, ?, ?, ?, ?, ?)", 
+        const [result] = await db.query(
+            "INSERT INTO `user_has_movies` (date_seen, mode_seen, my_note, comment, id_user, id_movie) VALUES (?, ?, ?, ?, ?, ?)", 
         [
             myMovieComment.date_seen, 
             myMovieComment.mode_seen,
@@ -38,7 +40,8 @@ const insertMovieIntoUserHasMovie = async (myMovieComment, movieId) => {
 
 const findAll = async (userId) => {
     try {
-        const [movies] = await db.query("SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_user = ?;", [userId]);
+        const [movies] = await db.query(
+            "SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_user = ?;", [userId]);
 
         return movies;
     } catch(e) {
@@ -48,7 +51,8 @@ const findAll = async (userId) => {
 
 const update = async (movie, id) => {
     try {
-    const [result] = await db.query("UPDATE `user_has_movies` SET date_seen = ?, mode_seen = ?, my_note = ?, comment = ? WHERE id = ?",
+    const [result] = await db.query(
+        "UPDATE `user_has_movies` SET date_seen = ?, mode_seen = ?, my_note = ?, comment = ? WHERE id = ?",
     [
         movie.date_seen,
         movie.mode_seen,
@@ -65,7 +69,8 @@ const update = async (movie, id) => {
 
 const findOne = async (id) => {
     try {
-        const [movie] = await db.query("SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_movie = ?;", [id]);
+        const [movie] = await db.query(
+            "SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_movie = ?;", [id]);
 
         return movie;
     } catch(e) {
@@ -93,4 +98,12 @@ const eraseFromMovies = async (id) => {
     }
 }
 
-module.exports = { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies };
+module.exports = {
+    insertMovieIntoMovie,
+    insertMovieIntoUserHasMovie,
+    findAll,
+    update,
+    findOne,
+    eraseFromUserHasMovies,
+    eraseFromMovies
+};
