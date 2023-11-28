@@ -1,4 +1,5 @@
 const { findAll, insert } = require("../models/userHandler.js");
+const validateUser = require("../validator/user.validator.js");
 
 const browse = async (req, res) => {
     try {
@@ -12,6 +13,10 @@ const browse = async (req, res) => {
 
 const add = async (req, res) => {
     try {
+        const errors = validateUser(req.body, true);
+
+        if (errors) return res.status(400).send(errors);
+
         const user = req.body;
 
         const result = await insert(user);
