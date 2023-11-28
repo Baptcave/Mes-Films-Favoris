@@ -98,7 +98,7 @@ function SignUp() {
           <input
             onChange={handleChange}
             type="password"
-            name="confirm_assword"
+            name="confirm_password"
             id="confirm_password"
             placeholder="Confirmez votre mot de passe"
           />

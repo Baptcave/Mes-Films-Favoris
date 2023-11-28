@@ -59,7 +59,15 @@ DEFAULT CHARACTER SET = utf8;
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES 
-(1, "Benoit", "Admin", 30, "Lyon", "France", "benoit@gmail.com", "$argon2id$v=19$m=524288,t=5,p=1$JUha8fciF0z+bSquR0PkoQ$znb6z7q7UtBtlljS9cxVTZgvVTlJ4bEg9gl4PCaVgWM");
+(
+  1,
+  "Benoit",
+  "Admin",
+  30,
+  "Lyon",
+  "France", 
+  "benoit@gmail.com",
+  "$argon2id$v=19$m=524288,t=5,p=1$JUha8fciF0z+bSquR0PkoQ$znb6z7q7UtBtlljS9cxVTZgvVTlJ4bEg9gl4PCaVgWM");
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 

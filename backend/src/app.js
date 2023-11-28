@@ -9,7 +9,7 @@ const router = require("./router");
 
 app.use(cors({
     origin: "http://localhost:3000",
-    credentials: true,
+    credentials: true, // pour pouvoir travailler avec un token dans le header des requêtes ou des cookies
     optionsSuccessStatus: 200,
 }));
 
