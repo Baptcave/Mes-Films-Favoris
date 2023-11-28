@@ -2,7 +2,9 @@ const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, find
 
 const browse = async (req, res) => {
     try {
-        const userId = req.params.id;
+        const userId = parseInt(req.params.id, 10);
+
+        if (isNaN(userId)) return;
 
         const movies = await findAll(userId);
 

@@ -18,6 +18,6 @@ app.use("/", router);
 
 app.get("*", (req, res) => {
     res.status(404).json({ message: "Not Found !" });
-});
+}); // si n'importe quelle route qui n'a pas été définie est appelée, elle renverra 404 et le message.
 
 module.exports = app;
