@@ -29,8 +29,5 @@
   "homepage": "https://github.com/Baptcave/Mes-Films-Favoris#readme",
   "version": "1.0.0",
   "main": "frontend/index.html",
-  "license": "MIT",
-  "dependencies": {
-    "joi": "^17.11.0"
-  }
+  "license": "MIT"
 }
