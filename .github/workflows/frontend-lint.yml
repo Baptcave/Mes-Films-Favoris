@@ -1,0 +1,12 @@
+name: frontend-lint-workflow
+
+on: push
+
+jobs:
+  lint-frontend:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Goto frontend and run tests
+        run: cd frontend && npm i && npm run eslint-lint
