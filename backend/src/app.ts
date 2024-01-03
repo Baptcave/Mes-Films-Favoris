@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+import { Request, Response } from 'express';
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use("/", router);
 
-app.get("*", (req, res) => {
+app.get("*", (req: Request, res: Response) => {
     res.status(404).json({ message: "Not Found !" });
 }); // si n'importe quelle route qui n'a pas été définie est appelée, elle renverra 404 et le message.
 

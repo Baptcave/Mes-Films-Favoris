@@ -1,8 +1,8 @@
 const Joi = require("joi");
+import { User } from "../types/User";
 
-const validateUser = (user, createMode) => {
+const validateUser = (user: User, createMode: "required" | "optionnal") => {
   const mode = createMode ? "required" : "optional";
-console.log(user);
   const result = Joi.object({
     firstname: Joi.string().min(2).max(80).presence(mode), 
     lastname: Joi.string().min(2).max(80).presence(mode),
@@ -13,7 +13,7 @@ console.log(user);
     password: Joi.string().presence(mode),
     confirm_password: Joi.string().presence(mode)
   }).required().min(1).validate(user, { abortEarly: false }).error;
-  // ce schéma est requis, il faut au minimum 1 champ renseigné, et il remontra toutes les erreurs éventuelles
+  // ce schéma est requis, il faut au minimum 1 champ renseigné, ira au bout et il remontera toutes les erreurs éventuelles
 
   if (result) {
     return { errorCount: result.details.length, details: result.details };
