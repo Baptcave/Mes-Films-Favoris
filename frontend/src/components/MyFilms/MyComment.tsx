@@ -1,4 +1,3 @@
-import React from "react";
 import formateDate from "../../services/dateFormat";
 
 import styles from "../../styles/MyComment.module.css";
@@ -24,7 +23,10 @@ function MyComment({ movie, handleModify, handleToggleDelete }) {
           <p>{movie.comment}</p>
         </div>
         <div className={styles.buttonsContainer}>
-          <button type="button" onClick={handleModify}>
+          <button
+            type="button"
+            onClick={handleModify}
+          >
             Modifier
           </button>
           <button

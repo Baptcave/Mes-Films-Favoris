@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import formateDate from "../../services/dateFormat";
 import styles from "../../styles/SearchMine.module.css";
+import { MovieCompleteFromAPI } from "../../types/MovieCompleteFromAPI";
 
 function SearchMine({ handleOneMovie, movies }) {
   const [query, setQuery] = useState("");
 
-  const handleQuery = (e) => {
+  const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
@@ -20,10 +21,10 @@ function SearchMine({ handleOneMovie, movies }) {
       />
       <div className={styles.allMoviesContainer}>
         {movies
-          .filter((elem) =>
+          .filter((elem: MovieCompleteFromAPI) =>
             elem.title_fr.toLowerCase().includes(query.toLowerCase())
           )
-          .map((movie) => (
+          .map((movie: MovieCompleteFromAPI) => (
             <button
               key={movie.id_movie}
               type="button"
@@ -32,7 +33,7 @@ function SearchMine({ handleOneMovie, movies }) {
             >
               <div
                 className={styles.fakeDivToClick}
-                id={movie.id_movie}
+                id={movie.id_movie.toString()}
               ></div>
               <div className={styles.imageContainer}>
                 <img

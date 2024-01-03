@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import filmAPI from "../../services/filmAPI";
 import formateDate from "../../services/dateFormat";
 import { toastError, toastValidation } from "../../services/toastService";
+import { MovieCommentToAPI } from "../../types/MovieCommentToAPI";
 
 import styles from "../../styles/MyComment.module.css";
 
 function ModifyComment({ movie, setBeingModified, setMovieSelected }) {
-  const [myComments, setMyComments] = useState("");
+  const [myComments, setMyComments] = useState<Partial<MovieCommentToAPI>>();
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setMyComments({ ...myComments, [e.target.name]: e.target.value });
   };
 
@@ -44,7 +49,11 @@ function ModifyComment({ movie, setBeingModified, setMovieSelected }) {
         <div className={styles.field}>
           <label htmlFor="mode_seen">Comment l'avez-vous vu ?</label>
           <p>{`(mode précédent : ${movie.mode_seen})`}</p>
-          <select defaultValue="" name="mode_seen" onChange={handleChange}>
+          <select
+            defaultValue=""
+            name="mode_seen"
+            onChange={handleChange}
+          >
             <option value="">---</option>
             <option value="Cinéma">Cinéma</option>
             <option value="Télévision">Télévision</option>
@@ -80,7 +89,10 @@ function ModifyComment({ movie, setBeingModified, setMovieSelected }) {
           >
             Annuler
           </button>
-          <button type="button" onClick={handleSaveChanges}>
+          <button
+            type="button"
+            onClick={handleSaveChanges}
+          >
             Enregistrer les modifications
           </button>
         </div>

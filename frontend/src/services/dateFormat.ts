@@ -1,4 +1,4 @@
-const formateDate = (date) => {
+const formateDate = (date: string) => {
     const array = date.split("T");
     const dateArray = array[0].split("-");
     const day = dateArray[2];

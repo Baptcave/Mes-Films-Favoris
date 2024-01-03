@@ -1,4 +1,3 @@
-import React from "react";
 import Login from "../components/Homepage/Login";
 import SignUp from "../components/Homepage/SignUp";
 import styles from "../styles/Homepage.module.css";

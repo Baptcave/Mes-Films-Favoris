@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import filmAPI from "../services/filmAPI";
 import { toastError, toastValidation } from "../services/toastService";
 
@@ -10,15 +10,18 @@ import MyMovieSelected from "../components/MyFilms/MyMovieSelected";
 import ModifyComment from "../components/MyFilms/ModifyComment";
 import MyComment from "../components/MyFilms/MyComment";
 import ConfirmDelete from "../components/MyFilms/ConfirmDelete";
+import { MovieCompleteFromAPI } from "../types/MovieCompleteFromAPI";
 
 function MyFilms() {
-  const userId = JSON.parse(localStorage.getItem("userId"));
+  const userId = localStorage.getItem("userId")
+    ? JSON.parse(localStorage.getItem("userId") as string)
+    : null;
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<MovieCompleteFromAPI[]>([]);
   const [movieSelected, setMovieSelected] = useState({});
   const [beingModified, setBeingModified] = useState(false);
   const [confirmDeleteIsDisplay, setConfirmDeleteIsDisplay] = useState(false);
-  const [movieToDelete, setMovieToDelete] = useState(null);
+  const [movieToDelete, setMovieToDelete] = useState<number | null>(null);
 
   useEffect(() => {
     filmAPI
@@ -29,8 +32,8 @@ function MyFilms() {
       .catch((err) => console.error(err));
   }, [beingModified]);
 
-  const handleOneMovie = (e) => {
-    const movieId = parseInt(e.target.id, 10);
+  const handleOneMovie = (e: React.MouseEvent<HTMLElement>) => {
+    const movieId = parseInt((e.target as any).id, 10);
     setMovieSelected(movies.filter((movie) => movie.id_movie === movieId)[0]);
   };
 
@@ -38,14 +41,15 @@ function MyFilms() {
     setBeingModified(!beingModified);
   };
 
-  const handleToggleDelete = (e) => {
-    setMovieToDelete(parseInt(e.target.id, 10));
+  const handleToggleDelete = (e: React.MouseEvent<HTMLElement>) => {
+    setMovieToDelete(parseInt((e.target as any).id, 10));
     setConfirmDeleteIsDisplay((prev) => !prev);
   };
 
   const confirmSuppression = () => {
-    filmAPI.delete(`/movies/${movieToDelete}`)
-      .then((res) => {
+    filmAPI
+      .delete(`/movies/${movieToDelete}`)
+      .then(() => {
         setBeingModified(!beingModified);
         setConfirmDeleteIsDisplay((prev) => !prev);
         setMovieSelected({});
@@ -53,7 +57,7 @@ function MyFilms() {
       })
       .catch((err) => {
         console.error(err);
-        toastError("Problème ? BaptGeek est sur le coup... 🤓")
+        toastError("Problème ? BaptGeek est sur le coup... 🤓");
       });
   };
 
@@ -71,12 +75,16 @@ function MyFilms() {
         <div className={styles.navbar}>
           <Nav />
         </div>
-        {movies.length === 0 && <p>Vous n'avez aucun film favori. Vous pouvez commencer à en chercher pour les ajouter ici.</p>}
+        {movies.length === 0 && (
+          <p>
+            Vous n'avez aucun film favori. Vous pouvez commencer à en chercher
+            pour les ajouter ici.
+          </p>
+        )}
         <div className={styles.gridContainer}>
           <SearchMine
-            userId={userId}
             handleOneMovie={handleOneMovie}
-            movies={movies}
+            movies={movies as MovieCompleteFromAPI[]}
           />
           {Object.keys(movieSelected).length !== 0 && (
             <MyMovieSelected movie={movieSelected} />
