@@ -1,11 +1,14 @@
+import { Request, Response } from "express";
+import { ValidatorResult } from "../types/ValidatorResult";
+
 const { findByMail } = require("../models/userHandler.js");
 const { verifyPassword } = require("../auth.js");
 const { encodeJWT } = require("../helper/jwt.helper.js");
 const validateLogin = require("../validator/login.validator.js");
 
-const login = async (req, res) => {
+const login = async (req: Request, res: Response) => {
     try {
-        const errors = validateLogin(req.body);
+        const errors: ValidatorResult = validateLogin(req.body);
     
         if (errors) return res.status(400).send(errors);
     
@@ -32,7 +35,7 @@ const login = async (req, res) => {
     }
 };
 
-const logout = async (req, res) => {
+const logout = async (req: Request, res: Response) => {
     res.clearCookie("auth_token").sendStatus(200);
 };
 

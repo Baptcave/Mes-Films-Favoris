@@ -1,6 +1,8 @@
-const db = require("./db.js");
+const db = require("./db.ts");
+import { Movie } from "../types/Movie";
+import { MovieComment } from "../types/MovieComment";
 
-const insertMovieIntoMovie = async (myMovieComment) => {
+const insertMovieIntoMovie = async (myMovieComment: Movie) => {
     try {
         const [result] = await db.query(
             "INSERT INTO `movie` (title_fr, length, year, imdb_note, poster, resume) VALUES (?, ?, ?, ?, ?, ?)", 
@@ -19,7 +21,7 @@ const insertMovieIntoMovie = async (myMovieComment) => {
     }
 }
 
-const insertMovieIntoUserHasMovie = async (myMovieComment, movieId) => {
+const insertMovieIntoUserHasMovie = async (myMovieComment: Movie, movieId: number) => {
     try {
         const [result] = await db.query(
             "INSERT INTO `user_has_movies` (date_seen, mode_seen, my_note, comment, id_user, id_movie) VALUES (?, ?, ?, ?, ?, ?)", 
@@ -38,7 +40,7 @@ const insertMovieIntoUserHasMovie = async (myMovieComment, movieId) => {
     }
 }
 
-const findAll = async (userId) => {
+const findAll = async (userId: number) => {
     try {
         const [movies] = await db.query(
             "SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_user = ?;", [userId]);
@@ -49,7 +51,7 @@ const findAll = async (userId) => {
     }
 }
 
-const update = async (movie, id) => {
+const update = async (movie: MovieComment, id: number) => {
     try {
     const [result] = await db.query(
         "UPDATE `user_has_movies` SET date_seen = ?, mode_seen = ?, my_note = ?, comment = ? WHERE id = ?",
@@ -67,7 +69,7 @@ const update = async (movie, id) => {
     }
 }
 
-const findOne = async (id) => {
+const findOne = async (id: number) => {
     try {
         const [movie] = await db.query(
             "SELECT * FROM `movie` AS m INNER JOIN `user_has_movies` AS um ON um.id_movie=m.id WHERE um.id_movie = ?;", [id]);
@@ -78,7 +80,7 @@ const findOne = async (id) => {
     }
 }
 
-const eraseFromUserHasMovies = async (id) => {
+const eraseFromUserHasMovies = async (id: number) => {
     try {
         const result = await db.query("DELETE FROM `user_has_movies` AS um WHERE um.id_movie = ?", [id]);
 
@@ -88,7 +90,7 @@ const eraseFromUserHasMovies = async (id) => {
     }
 }
 
-const eraseFromMovies = async (id) => {
+const eraseFromMovies = async (id: number) => {
     try {
         const result = await db.query("DELETE FROM `movie` WHERE id = ?;", [id]);
 

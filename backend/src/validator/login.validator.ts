@@ -1,6 +1,7 @@
 const Joi = require("joi");
+import { User } from "../types/User";
 
-const validateLogin = (user) => {
+const validateLogin = (user: Pick<User, "mail" | "password">) => {
   const result = Joi.object({
     mail: Joi.string().email().presence("required"),
     password: Joi.string().presence("required")

@@ -1,12 +1,17 @@
+import { Request, Response } from "express";
+import { Movie } from "../types/Movie";
+import { MovieComment } from "../types/MovieComment";
+import { MovieUpdate } from "../types/MovieUpdate";
+
 const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies } = require("../models/movieHandler.js");
 
-const browse = async (req, res) => {
+const browse = async (req: Request, res: Response) => {
     try {
         const userId = parseInt(req.params.id, 10);
 
         if (isNaN(userId)) return;
 
-        const movies = await findAll(userId);
+        const movies: Movie[] = await findAll(userId as number);
 
         res.send(movies);
     } catch(e) {
@@ -14,13 +19,13 @@ const browse = async (req, res) => {
     }
 }
 
-const add = async (req, res) => {
+const add = async (req: Request, res: Response) => {
     try {
-        const myMovieComment = req.body;
+        const myMovieComment: MovieComment = req.body;
 
         const movieResult = await insertMovieIntoMovie(myMovieComment);
 
-        const movieInsertId = movieResult.insertId;
+        const movieInsertId: number = movieResult.insertId;
 
         const userMovieResult = await insertMovieIntoUserHasMovie(myMovieComment, movieInsertId);
 
@@ -34,10 +39,10 @@ const add = async (req, res) => {
     }
 };
 
-const edit = async (req, res) => {
+const edit = async (req: Request, res: Response) => {
     try {
-        const userHasMovieId = req.params.id;
-        const movieUpdate = req.body; 
+        const userHasMovieId: number = parseInt(req.params.id, 10);
+        const movieUpdate: MovieUpdate = req.body; 
 
         const result = await update(movieUpdate, userHasMovieId);
         
@@ -53,9 +58,9 @@ const edit = async (req, res) => {
     }
 };
 
-const remove = async (req, res) => {
+const remove = async (req: Request, res: Response) => {
     try {
-        const movieId = parseInt(req.params.id, 10);
+        const movieId: number = parseInt(req.params.id, 10);
 
         const [userHasMoviesResult] = await eraseFromUserHasMovies(movieId);
 

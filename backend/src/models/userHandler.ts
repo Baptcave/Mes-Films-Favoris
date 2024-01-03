@@ -1,4 +1,5 @@
-const db = require("./db.js");
+const db = require("./db.ts");
+import { User } from "../types/User";
 
 const findAll = async () => {
     try {
@@ -10,7 +11,7 @@ const findAll = async () => {
     }
 }
 
-const findByMail = async (mail) => {
+const findByMail = async (mail: Pick<User, "mail">) => {
     try {
         const [user] = await db.query("SELECT * FROM `user` WHERE mail = ?;", [mail]);
 
@@ -20,7 +21,7 @@ const findByMail = async (mail) => {
     }
 }
 
-const insert = async (user) => {
+const insert = async (user: Omit<User, "confirm_password">) => {
     try {
         const [result] = await db.query("INSERT INTO `user` (firstname, lastname, age, city, country, mail, password) VALUES (?, ?, ?, ?, ?, ?, ?)", 
         [
