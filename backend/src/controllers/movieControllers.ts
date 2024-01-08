@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { Movie } from "../types/Movie";
-import { MovieComment } from "../types/MovieComment";
-import { MovieUpdate } from "../types/MovieUpdate";
+import { MovieTotalFromAPI } from "../types/MovieTotalFromAPI";
+import { MovieTotalToAPI } from "../types/MovieTotalToAPI";
+import { MovieCommentToAPI } from "../types/MovieCommentToAPI";
 
 const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies } = require("../models/movieHandler.ts");
 
@@ -11,7 +11,7 @@ const browse = async (req: Request, res: Response) => {
 
         if (isNaN(userId)) return;
 
-        const movies: Movie[] = await findAll(userId as number);
+        const movies: MovieTotalFromAPI[] = await findAll(userId as number);
 
         res.send(movies);
     } catch(e) {
@@ -21,7 +21,7 @@ const browse = async (req: Request, res: Response) => {
 
 const add = async (req: Request, res: Response) => {
     try {
-        const myMovieComment: MovieComment = req.body;
+        const myMovieComment: MovieTotalToAPI = req.body;
 
         const movieResult = await insertMovieIntoMovie(myMovieComment);
 
@@ -42,7 +42,7 @@ const add = async (req: Request, res: Response) => {
 const edit = async (req: Request, res: Response) => {
     try {
         const userHasMovieId: number = parseInt(req.params.id, 10);
-        const movieUpdate: MovieUpdate = req.body; 
+        const movieUpdate: MovieCommentToAPI & {id_movie: number} = req.body; 
 
         const result = await update(movieUpdate, userHasMovieId);
         

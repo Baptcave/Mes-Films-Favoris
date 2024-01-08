@@ -1,8 +1,8 @@
 const db = require("./db.ts");
-import { Movie } from "../types/Movie";
-import { MovieComment } from "../types/MovieComment";
+import { MovieCommentToAPI } from "../types/MovieCommentToAPI";
+import { MovieTotalToAPI } from "../types/MovieTotalToAPI";
 
-const insertMovieIntoMovie = async (myMovieComment: Movie) => {
+const insertMovieIntoMovie = async (myMovieComment: MovieTotalToAPI) => {
     try {
         const [result] = await db.query(
             "INSERT INTO `movie` (title_fr, length, year, imdb_note, poster, resume) VALUES (?, ?, ?, ?, ?, ?)", 
@@ -21,7 +21,7 @@ const insertMovieIntoMovie = async (myMovieComment: Movie) => {
     }
 }
 
-const insertMovieIntoUserHasMovie = async (myMovieComment: Movie, movieId: number) => {
+const insertMovieIntoUserHasMovie = async (myMovieComment: MovieTotalToAPI, movieId: number) => {
     try {
         const [result] = await db.query(
             "INSERT INTO `user_has_movies` (date_seen, mode_seen, my_note, comment, id_user, id_movie) VALUES (?, ?, ?, ?, ?, ?)", 
@@ -51,7 +51,7 @@ const findAll = async (userId: number) => {
     }
 }
 
-const update = async (movie: MovieComment, id: number) => {
+const update = async (movie: MovieCommentToAPI, id: number) => {
     try {
     const [result] = await db.query(
         "UPDATE `user_has_movies` SET date_seen = ?, mode_seen = ?, my_note = ?, comment = ? WHERE id = ?",

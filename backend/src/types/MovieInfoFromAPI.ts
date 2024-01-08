@@ -1,4 +1,4 @@
-export type MovieOnlyFromAPI = {
+export type MovieInfoFromAPI = {
   id: number;
   title_fr: string;
   length: number;
@@ -7,5 +7,5 @@ export type MovieOnlyFromAPI = {
   cast?: string;
   imdb_note: number;
   poster: string;
-  resume: string;
+  resume?: string;
 };

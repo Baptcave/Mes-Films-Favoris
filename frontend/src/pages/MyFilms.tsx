@@ -10,14 +10,14 @@ import MyMovieSelected from "../components/MyFilms/MyMovieSelected";
 import ModifyComment from "../components/MyFilms/ModifyComment";
 import MyComment from "../components/MyFilms/MyComment";
 import ConfirmDelete from "../components/MyFilms/ConfirmDelete";
-import { MovieCompleteFromAPI } from "../types/MovieCompleteFromAPI";
+import { MovieTotalFromAPI } from "../types/MovieTotalFromAPI";
 
 function MyFilms() {
   const userId = localStorage.getItem("userId")
     ? JSON.parse(localStorage.getItem("userId") as string)
     : null;
 
-  const [movies, setMovies] = useState<MovieCompleteFromAPI[]>([]);
+  const [movies, setMovies] = useState<MovieTotalFromAPI[]>([]);
   const [movieSelected, setMovieSelected] = useState({});
   const [beingModified, setBeingModified] = useState(false);
   const [confirmDeleteIsDisplay, setConfirmDeleteIsDisplay] = useState(false);
@@ -84,7 +84,7 @@ function MyFilms() {
         <div className={styles.gridContainer}>
           <SearchMine
             handleOneMovie={handleOneMovie}
-            movies={movies as MovieCompleteFromAPI[]}
+            movies={movies as MovieTotalFromAPI[]}
           />
           {Object.keys(movieSelected).length !== 0 && (
             <MyMovieSelected movie={movieSelected} />
