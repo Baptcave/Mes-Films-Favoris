@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-import { User } from "../types/User";
+import { UserToAPI } from "../types/UserToAPI";
 
-const encodeJWT = (payload: User) => {
+const encodeJWT = (payload: UserToAPI) => {
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 };
 

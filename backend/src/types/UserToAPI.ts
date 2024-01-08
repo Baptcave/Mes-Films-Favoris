@@ -1,4 +1,4 @@
-export type User = {
+export type UserToAPI = {
   firstname: string;
   lastname: string;
   age: string;

@@ -1,7 +1,7 @@
 const Joi = require("joi");
-import { User } from "../types/User";
+import { UserToAPI } from "../types/UserToAPI";
 
-const validateUser = (user: User, createMode: "required" | "optionnal") => {
+const validateUser = (user: UserToAPI, createMode: "required" | "optionnal") => {
   const mode = createMode ? "required" : "optional";
   const result = Joi.object({
     firstname: Joi.string().min(2).max(80).presence(mode), 
