@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import filmAPI from "../services/filmAPI";
 import { toastError, toastValidation } from "../services/toastService";
@@ -38,11 +38,19 @@ function Nav() {
         type="button"
         onClick={handleToggleLogout}
       >
-        <img className={styles.logo} src={Logo} alt="Logo" />
+        <img
+          className={styles.logo}
+          src={Logo}
+          alt="Logo"
+        />
       </button>
       <div className={styles.buttonsWrap}>
-        <Link to="/search"><span className={styles.button}>Recherche</span></Link>
-        <Link to="/my-films"><span className={styles.button}>Mes Films Favoris</span></Link>
+        <Link to="/search">
+          <span className={styles.button}>Recherche</span>
+        </Link>
+        <Link to="/my-films">
+          <span className={styles.button}>Mes Films Favoris</span>
+        </Link>
       </div>
       {confirmLogoutIsDisplay && (
         <div className={styles.popUpContainer}>

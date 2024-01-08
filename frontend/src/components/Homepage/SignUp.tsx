@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import filmAPI from "../../services/filmAPI";
 import { toastError, toastValidation } from "../../services/toastService";
 import styles from "../../styles/Sign.module.css";
+import { UserToAPI } from "../../types/UserToAPI";
 
 function SignUp() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<Partial<UserToAPI>>();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
 
@@ -17,13 +18,17 @@ function SignUp() {
     if (user) {
       filmAPI
         .post("/users", user)
-        .then((res) => toastValidation(`Bienvenue, ${user.firstname}, vous pouvez désormais vous connecter 🙂`))
+        .then(() =>
+          toastValidation(
+            `Bienvenue, ${user.firstname}, vous pouvez désormais vous connecter 🙂`
+          )
+        )
         .catch((err) => {
           console.error(err);
           toastError("Oupsi ! Êtes-vous sûr de vos informations ?");
         });
     } else {
-        toastError("Vous n'avez rentré aucune information...")
+      toastError("Vous n'avez rentré aucune information...");
     }
   };
 
@@ -104,7 +109,12 @@ function SignUp() {
           />
         </div>
         <div className={styles.letGoContainer}>
-        <button type="button" onClick={handleSubmit}>Let's Go</button>
+          <button
+            type="button"
+            onClick={handleSubmit}
+          >
+            Let's Go
+          </button>
         </div>
       </form>
     </div>

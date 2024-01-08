@@ -3,7 +3,7 @@ import { Movie } from "../types/Movie";
 import { MovieComment } from "../types/MovieComment";
 import { MovieUpdate } from "../types/MovieUpdate";
 
-const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies } = require("../models/movieHandler.js");
+const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies } = require("../models/movieHandler.ts");
 
 const browse = async (req: Request, res: Response) => {
     try {

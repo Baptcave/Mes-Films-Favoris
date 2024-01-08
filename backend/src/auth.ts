@@ -1,5 +1,5 @@
 const argon2 = require("argon2");
-const { decodeJWT } = require("./helper/jwt.helper.js");
+const { decodeJWT } = require("./helper/jwt.helper.ts");
 import { Request, Response, NextFunction } from 'express';
 import { ITokenInfoRequest } from './types/interfaces/ITokenInfoRequest'; 
 
@@ -30,7 +30,6 @@ const verifyPassword = (hashedPassword: string, password: string): void => {
 
 const verifyToken = (req: ITokenInfoRequest, res: Response, next: NextFunction) => {
   try {
-    console.log(req);
     const token = req.cookies.auth_token;
 
     if (!token) {

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { ValidatorResult } from "../types/ValidatorResult";
 
-const { findByMail } = require("../models/userHandler.js");
-const { verifyPassword } = require("../auth.js");
-const { encodeJWT } = require("../helper/jwt.helper.js");
-const validateLogin = require("../validator/login.validator.js");
+const { findByMail } = require("../models/userHandler.ts");
+const { verifyPassword } = require("../auth.ts");
+const { encodeJWT } = require("../helper/jwt.helper.ts");
+const validateLogin = require("../validator/login.validator.ts");
 
 const login = async (req: Request, res: Response) => {
     try {
