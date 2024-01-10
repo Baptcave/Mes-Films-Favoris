@@ -15,6 +15,9 @@
     "dev-front": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run dev\"",
     "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_glo nodemon index.ts\"",
     "lint": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run lint && cd ../backend && $npm_package_config_cli run lint\"",
+    "lint-front": "cd ./frontend && $npm_package_config_cli run lint",
+    "fix-front": "cd ./frontend && $npm_package_config_cli run fix",
+    "format-front": "cd ./frontend && $npm_package_config_cli run format",
     "fix": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run fix && cd ../backend && $npm_package_config_cli run fix\""
   },
   "author": "Baptiste",
