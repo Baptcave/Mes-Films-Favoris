@@ -18,7 +18,7 @@ function MyFilms() {
     : null;
 
   const [movies, setMovies] = useState<MovieTotalFromAPI[]>([]);
-  const [movieSelected, setMovieSelected] = useState({});
+  const [movieSelected, setMovieSelected] = useState<MovieTotalFromAPI>();
   const [beingModified, setBeingModified] = useState(false);
   const [confirmDeleteIsDisplay, setConfirmDeleteIsDisplay] = useState(false);
   const [movieToDelete, setMovieToDelete] = useState<number | null>(null);
@@ -52,7 +52,7 @@ function MyFilms() {
       .then(() => {
         setBeingModified(!beingModified);
         setConfirmDeleteIsDisplay((prev) => !prev);
-        setMovieSelected({});
+        setMovieSelected(undefined);
         toastValidation("Votre film a bien été supprimé 🙌");
       })
       .catch((err) => {
@@ -77,8 +77,7 @@ function MyFilms() {
         </div>
         {movies.length === 0 && (
           <p>
-            Vous n'avez aucun film favori. Vous pouvez commencer à en chercher
-            pour les ajouter ici.
+            Vous n'avez aucun film favori. Vous pouvez commencer à en chercher pour les ajouter ici.
           </p>
         )}
         <div className={styles.gridContainer}>
@@ -86,17 +85,17 @@ function MyFilms() {
             handleOneMovie={handleOneMovie}
             movies={movies as MovieTotalFromAPI[]}
           />
-          {Object.keys(movieSelected).length !== 0 && (
-            <MyMovieSelected movie={movieSelected} />
-          )}
-          {Object.keys(movieSelected).length !== 0 && beingModified && (
+          {movieSelected && <MyMovieSelected movie={movieSelected} />}
+          {movieSelected && beingModified && (
             <ModifyComment
               movie={movieSelected}
               setBeingModified={setBeingModified}
-              setMovieSelected={setMovieSelected}
+              setMovieSelected={
+                setMovieSelected as React.Dispatch<React.SetStateAction<MovieTotalFromAPI>>
+              }
             />
           )}
-          {Object.keys(movieSelected).length !== 0 && !beingModified && (
+          {movieSelected && !beingModified && (
             <MyComment
               movie={movieSelected}
               handleModify={handleModify}

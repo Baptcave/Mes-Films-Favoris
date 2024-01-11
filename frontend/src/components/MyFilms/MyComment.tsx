@@ -1,8 +1,15 @@
 import formateDate from "../../services/dateFormat";
+import { MovieTotalFromAPI } from "../../types/MovieTotalFromAPI";
 
 import styles from "../../styles/MyComment.module.css";
 
-function MyComment({ movie, handleModify, handleToggleDelete }) {
+type MyCommentProps = {
+  movie: MovieTotalFromAPI;
+  handleModify: () => void;
+  handleToggleDelete: (e: React.MouseEvent<HTMLElement>) => void;
+};
+
+function MyComment({ movie, handleModify, handleToggleDelete }: MyCommentProps) {
   return (
     <div className={styles.allContainer}>
       <div className={styles.card}>
@@ -24,15 +31,15 @@ function MyComment({ movie, handleModify, handleToggleDelete }) {
         </div>
         <div className={styles.buttonsContainer}>
           <button
-            type="button"
+            type='button'
             onClick={handleModify}
           >
             Modifier
           </button>
           <button
-            type="button"
+            type='button'
             onClick={handleToggleDelete}
-            id={movie.id_movie}
+            id={movie.id_movie.toString()}
           >
             Supprimer
           </button>

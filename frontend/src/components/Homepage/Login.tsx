@@ -30,37 +30,35 @@ function Login() {
           toastError("Oupsi ! Un problème avec vos identifiants ?");
         });
     } else {
-      toastError(
-        "Oups ! Avez-vous bien renseigné votre mail et mot de passe ?"
-      );
+      toastError("Oups ! Avez-vous bien renseigné votre mail et mot de passe ?");
     }
   };
 
   return (
     <div className={styles.globalContainer}>
-      <button type="button">Me Connecter</button>
+      <button type='button'>Me Connecter</button>
       <form>
         <div>
           <input
             onChange={(e) => setMail(e.target.value)}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="mail"
+            type='email'
+            name='email'
+            id='email'
+            placeholder='mail'
           />
         </div>
         <div>
           <input
             onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="mot de passe"
+            type='password'
+            name='password'
+            id='password'
+            placeholder='mot de passe'
           />
         </div>
         <div className={styles.letGoContainer}>
           <button
-            type="button"
+            type='button'
             onClick={handleSubmit}
           >
             Connexion

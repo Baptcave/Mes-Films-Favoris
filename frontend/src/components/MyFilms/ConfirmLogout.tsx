@@ -1,6 +1,11 @@
 import styles from "../../styles/Confirm.module.css";
 
-function ConfirmDelete({ handleToggleLogout, confirmLogout }) {
+type ConfirmeDeleteProps = {
+  handleToggleLogout: () => void;
+  confirmLogout: () => void;
+};
+
+function ConfirmDelete({ handleToggleLogout, confirmLogout }: ConfirmeDeleteProps) {
   return (
     <div className={styles.globalContainer}>
       <div className={styles.cardContainer}>
@@ -10,14 +15,14 @@ function ConfirmDelete({ handleToggleLogout, confirmLogout }) {
         <div className={styles.buttonsContainer}>
           <button
             className={styles.validateButton}
-            type="button"
+            type='button'
             onClick={handleToggleLogout}
           >
             Annuler
           </button>
           <button
             className={styles.cancelButton}
-            type="button"
+            type='button'
             onClick={confirmLogout}
           >
             Je veux me déconnecter

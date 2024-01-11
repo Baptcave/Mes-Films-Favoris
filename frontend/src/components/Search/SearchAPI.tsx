@@ -3,7 +3,11 @@ import axios from "axios";
 import styles from "../../styles/SearchAPI.module.css";
 import { MovieFromIMDB } from "../../types/MovieFromIMDB";
 
-function SearchAPI({ handleOneMovie }) {
+type SearchAPIProps = {
+  handleOneMovie: (e: React.MouseEvent<HTMLElement>) => void;
+};
+
+function SearchAPI({ handleOneMovie }: SearchAPIProps) {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState<MovieFromIMDB[]>([]);
 
@@ -28,13 +32,13 @@ function SearchAPI({ handleOneMovie }) {
     <div>
       <input
         onChange={handleChange}
-        type="text"
-        name="search"
-        id="search"
-        placeholder="Rechercher..."
+        type='text'
+        name='search'
+        id='search'
+        placeholder='Rechercher...'
       />
       <button
-        type="button"
+        type='button'
         onClick={handleMovies}
       >
         Envoyer
@@ -43,7 +47,7 @@ function SearchAPI({ handleOneMovie }) {
         {movies.map((movie) => (
           <button
             key={movie.id}
-            type="button"
+            type='button'
             onClick={handleOneMovie}
             className={styles.movieContainer}
           >

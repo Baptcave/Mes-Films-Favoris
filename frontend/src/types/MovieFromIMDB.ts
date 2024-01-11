@@ -6,4 +6,4 @@ export type MovieFromIMDB = {
   vote_average: number;
   poster_path: string;
   overview: string;
-}
+};

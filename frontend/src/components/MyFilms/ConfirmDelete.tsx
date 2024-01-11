@@ -1,6 +1,11 @@
 import styles from "../../styles/Confirm.module.css";
 
-function ConfirmDelete({ handleToggleDelete, confirmSuppression }) {
+type ConfirmDeleteProps = {
+  handleToggleDelete: (e: React.MouseEvent<HTMLElement>) => void;
+  confirmSuppression: () => void;
+};
+
+function ConfirmDelete({ handleToggleDelete, confirmSuppression }: ConfirmDeleteProps) {
   return (
     <div className={styles.globalContainer}>
       <div className={styles.cardContainer}>
@@ -9,14 +14,14 @@ function ConfirmDelete({ handleToggleDelete, confirmSuppression }) {
         <div className={styles.buttonsContainer}>
           <button
             className={styles.validateButton}
-            type="button"
+            type='button'
             onClick={confirmSuppression}
           >
             Confirmer la suppression
           </button>
           <button
             className={styles.cancelButton}
-            type="button"
+            type='button'
             onClick={handleToggleDelete}
           >
             Annuler
