@@ -9,13 +9,22 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/my-films" element={<MyFilms />} />
+        <Route
+          path='/'
+          element={<Homepage />}
+        />
+        <Route
+          path='/search'
+          element={<Search />}
+        />
+        <Route
+          path='/my-films'
+          element={<MyFilms />}
+        />
       </Routes>
       <ToastContainer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

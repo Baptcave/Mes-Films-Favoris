@@ -9,7 +9,7 @@ const toastError = (message: string) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "colored",
+    theme: "colored"
   });
 };
 
@@ -22,7 +22,7 @@ const toastValidation = (message: string) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "colored",
+    theme: "colored"
   });
 };
 

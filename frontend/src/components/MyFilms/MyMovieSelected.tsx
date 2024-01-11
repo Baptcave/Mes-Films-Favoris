@@ -1,6 +1,11 @@
 import styles from "../../styles/MyMovieSelected.module.css";
+import { MovieTotalFromAPI } from "../../types/MovieTotalFromAPI";
 
-function MyMovieSelected({ movie }) {
+type MyMovieSelectedProps = {
+  movie: MovieTotalFromAPI;
+};
+
+function MyMovieSelected({ movie }: MyMovieSelectedProps) {
   return (
     <div className={styles.movieContainer}>
       <div className={styles.movieCard}>

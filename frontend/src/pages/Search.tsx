@@ -8,23 +8,23 @@ import SearchAPI from "../components/Search/SearchAPI";
 import MovieSelected from "../components/Search/MovieSelected";
 import Comment from "../components/Search/Comment";
 import styles from "../styles/SearchPage.module.css";
+import { MovieFromIMDB } from "../types/MovieFromIMDB";
+import { MovieCommentToAPI } from "../types/MovieCommentToAPI";
 
 function Search() {
   const userId = localStorage.getItem("userId")
     ? JSON.parse(localStorage.getItem("userId") as string)
     : null;
 
-  const [movieSelected, setMovieSelected] = useState({});
-  const [myComments, setMyComments] = useState({});
+  const [movieSelected, setMovieSelected] = useState<MovieFromIMDB>();
+  const [myComments, setMyComments] = useState<Partial<MovieCommentToAPI>>();
 
   const key = import.meta.env.VITE_API_KEY;
 
   const handleOneMovie = (e: React.MouseEvent<HTMLElement>) => {
     const movie_id = parseInt((e.target as any).id, 10);
     axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${key}&language=fr-FR`
-      )
+      .get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${key}&language=fr-FR`)
       .then((res) => {
         setMovieSelected(res.data);
       })
@@ -57,10 +57,8 @@ function Search() {
       <Nav />
       <div className={styles.gridContainer}>
         <SearchAPI handleOneMovie={handleOneMovie} />
-        {Object.keys(movieSelected).length !== 0 && (
-          <MovieSelected movieSelected={movieSelected} />
-        )}
-        {Object.keys(movieSelected).length !== 0 && (
+        {movieSelected && <MovieSelected movieSelected={movieSelected} />}
+        {movieSelected && (
           <Comment
             myComments={myComments}
             setMyComments={setMyComments}

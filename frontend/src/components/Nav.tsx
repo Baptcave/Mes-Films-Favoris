@@ -35,20 +35,20 @@ function Nav() {
     <div className={styles.navBody}>
       <button
         className={styles.logoContainer}
-        type="button"
+        type='button'
         onClick={handleToggleLogout}
       >
         <img
           className={styles.logo}
           src={Logo}
-          alt="Logo"
+          alt='Logo'
         />
       </button>
       <div className={styles.buttonsWrap}>
-        <Link to="/search">
+        <Link to='/search'>
           <span className={styles.button}>Recherche</span>
         </Link>
-        <Link to="/my-films">
+        <Link to='/my-films'>
           <span className={styles.button}>Mes Films Favoris</span>
         </Link>
       </div>

@@ -6,4 +6,4 @@ export type MovieCommentFromAPI = {
   comment: string;
   id_user: number;
   id_movie: number;
-}
+};

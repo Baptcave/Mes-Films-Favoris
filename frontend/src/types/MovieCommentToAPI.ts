@@ -4,4 +4,4 @@ export type MovieCommentToAPI = {
   my_note: number;
   comment: string;
   userId: number;
-}
+};

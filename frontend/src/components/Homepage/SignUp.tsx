@@ -19,9 +19,7 @@ function SignUp() {
       filmAPI
         .post("/users", user)
         .then(() =>
-          toastValidation(
-            `Bienvenue, ${user.firstname}, vous pouvez désormais vous connecter 🙂`
-          )
+          toastValidation(`Bienvenue, ${user.firstname}, vous pouvez désormais vous connecter 🙂`)
         )
         .catch((err) => {
           console.error(err);
@@ -34,83 +32,83 @@ function SignUp() {
 
   return (
     <div className={styles.globalContainer}>
-      <button type="button">M'inscrire</button>
+      <button type='button'>M'inscrire</button>
       <form>
         <div>
           <input
             onChange={handleChange}
-            type="text"
-            name="firstname"
-            id="firstname"
-            placeholder="Prénom"
+            type='text'
+            name='firstname'
+            id='firstname'
+            placeholder='Prénom'
           />
         </div>
         <div>
           <input
             onChange={handleChange}
-            type="text"
-            name="lastname"
-            id="lastname"
-            placeholder="Nom de famille"
+            type='text'
+            name='lastname'
+            id='lastname'
+            placeholder='Nom de famille'
           />
         </div>
         <div>
           <input
             onChange={handleChange}
-            type="number"
-            name="age"
-            id="age"
-            placeholder="Âge"
+            type='number'
+            name='age'
+            id='age'
+            placeholder='Âge'
           />
         </div>
         <div>
           <input
             onChange={handleChange}
-            type="text"
-            name="city"
-            id="city"
-            placeholder="Ville"
+            type='text'
+            name='city'
+            id='city'
+            placeholder='Ville'
           />
         </div>
         <div>
           <input
             onChange={handleChange}
-            type="text"
-            name="country"
-            id="country"
-            placeholder="Pays"
+            type='text'
+            name='country'
+            id='country'
+            placeholder='Pays'
           />
         </div>
         <div>
           <input
             onChange={handleChange}
-            type="mail"
-            name="mail"
-            id="mail"
-            placeholder="Mail"
+            type='mail'
+            name='mail'
+            id='mail'
+            placeholder='Mail'
           />
         </div>
         <div>
           <input
             onChange={handleChange}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Mot de passe"
+            type='password'
+            name='password'
+            id='password'
+            placeholder='Mot de passe'
           />
         </div>
         <div>
           <input
             onChange={handleChange}
-            type="password"
-            name="confirm_password"
-            id="confirm_password"
-            placeholder="Confirmez votre mot de passe"
+            type='password'
+            name='confirm_password'
+            id='confirm_password'
+            placeholder='Confirmez votre mot de passe'
           />
         </div>
         <div className={styles.letGoContainer}>
           <button
-            type="button"
+            type='button'
             onClick={handleSubmit}
           >
             Let's Go

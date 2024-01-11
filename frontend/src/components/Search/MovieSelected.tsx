@@ -1,6 +1,11 @@
 import styles from "../../styles/MovieSelected.module.css";
+import { MovieFromIMDB } from "../../types/MovieFromIMDB";
 
-function MovieSelected({ movieSelected }) {
+type MovieSelectedProps = {
+  movieSelected: MovieFromIMDB;
+};
+
+function MovieSelected({ movieSelected }: MovieSelectedProps) {
   const movie = movieSelected;
   return (
     <div className={styles.movieContainer}>
