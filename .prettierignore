@@ -1,5 +1,5 @@
 .eslintrc.json
-node_modules
+.prettierrc
 public
 declaration.d.ts
 tsconfig.json

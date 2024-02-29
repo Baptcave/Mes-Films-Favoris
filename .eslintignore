@@ -1,7 +1,5 @@
 .eslintrc.json
-node_modules
 public
-declaration.d.ts
 tsconfig.json
 vite.config.ts
 package*.json

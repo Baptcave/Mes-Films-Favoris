@@ -23,9 +23,9 @@ const findByMail = async (mail: Pick<UserToAPI, "mail">) => {
 
 const insert = async (user: Omit<UserToAPI, "confirm_password">) => {
     try {
-        const [result] = await db.query("INSERT INTO `user` (firstname, lastname, age, city, country, mail, password) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+        const [result] = await db.query("INSERT INTO `user` (firstname, lastname, age, city, country, mail, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
         [
-            user.firstname, 
+            user.firstname,
             user.lastname,
             user.age,
             user.city,

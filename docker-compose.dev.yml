@@ -1,0 +1,70 @@
+services:
+  client:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: mff-client
+    environment:
+      VITE_BACKEND_URL: http://localhost:8000
+      VITE_API_KEY: d1195e56de3a08fa85ce12980ecb94b4
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src/:/app/src/
+      - ./frontend/public/:/app/public/
+      - ./frontend/tsconfig.json:/app/tsconfig.json
+      - ./frontend/vite.config.ts:/app/vite.config.ts
+      - ./frontend/declaration.d.ts:/app/declaration.d.ts
+    networks:
+      - mff_network
+
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: mff-server
+    depends_on:
+      - db
+    environment:
+      APP_PORT: 8000
+      FRONTEND_URL: http://localhost:3000
+      JWT_SECRET: baptou47
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: baptiste
+      DB_PASSWORD: CarniBAL--18/
+      DB_NAME: films
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/src/:/app/src/
+      - ./backend/public/:/app/public/
+      - ./backend/tsconfig.json:/app/tsconfig.json
+      - ./backend/index.ts:/app/index.ts
+      - ./backend/populateDB.ts:/app/populateDB.ts
+      - ./backend/db-fixtures.sql:/app/db-fixtures.sql
+    networks:
+      - mff_network
+
+  db:
+    image: mysql:8.3
+    container_name: mff-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpsd
+      MYSQL_USER: baptiste
+      MYSQL_PASSWORD: CarniBAL--18/
+      MYSQL_DATABASE: films
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mff_network
+
+networks:
+  mff_network:
+    driver: bridge
+
+volumes:
+  db-data:

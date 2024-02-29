@@ -15,7 +15,7 @@ DROP SCHEMA IF EXISTS `films` ;
 -- -----------------------------------------------------
 -- Schema films
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `films` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `films` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `films` ;
 
 -- -----------------------------------------------------
@@ -35,8 +35,7 @@ CREATE TABLE IF NOT EXISTS `films`.`movie` (
   `resume` TEXT,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
+DEFAULT CHARACTER SET = utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 -- -----------------------------------------------------
 -- Table `films`.`user`
@@ -54,22 +53,7 @@ CREATE TABLE IF NOT EXISTS `films`.`user` (
   `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES 
-(
-  1,
-  "Benoit",
-  "Admin",
-  30,
-  "Lyon",
-  "France", 
-  "benoit@gmail.com",
-  "$argon2id$v=19$m=524288,t=5,p=1$JUha8fciF0z+bSquR0PkoQ$znb6z7q7UtBtlljS9cxVTZgvVTlJ4bEg9gl4PCaVgWM");
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
+DEFAULT CHARACTER SET = utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 -- -----------------------------------------------------
 -- Table `films`.`user_has_movies`
@@ -94,8 +78,7 @@ CREATE TABLE IF NOT EXISTS `films`.`user_has_movies` (
     FOREIGN KEY (`id_user`)
     REFERENCES `films`.`user` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
-
+DEFAULT CHARACTER SET = utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
