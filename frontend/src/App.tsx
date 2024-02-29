@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Homepage from "./pages/Homepage";
@@ -7,7 +8,7 @@ import MyFilms from "./pages/MyFilms";
 
 function App() {
   return (
-    <div>
+    <Router>
       <Routes>
         <Route
           path='/'
@@ -23,7 +24,7 @@ function App() {
         />
       </Routes>
       <ToastContainer />
-    </div>
+    </Router>
   );
 }
 

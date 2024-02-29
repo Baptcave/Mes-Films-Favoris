@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieSelected renders correctly 1`] = `
+<body>
+  <div>
+    <div>
+      <div>
+        <div>
+          <img
+            alt="image de Matrix"
+            src="https://image.tmdb.org/t/p/w500/pEoqbqtLc4CcwDUDqxmEDSWpWTZ.jpg"
+          />
+        </div>
+        <p>
+          Titre : 
+          Matrix
+        </p>
+        <p>
+          Date de sortie : 
+          1999-03-31
+        </p>
+        <p>
+          Durée : 
+          135
+           minutes
+        </p>
+        <p>
+          Note Imdb : 
+          8
+           / 10
+        </p>
+        <p>
+          Résumé : 
+          Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -19,7 +19,7 @@ function Search() {
   const [movieSelected, setMovieSelected] = useState<MovieFromIMDB>();
   const [myComments, setMyComments] = useState<Partial<MovieCommentToAPI>>();
 
-  const key = import.meta.env.VITE_API_KEY;
+  const key = process.env.VITE_API_KEY;
 
   const handleOneMovie = (e: React.MouseEvent<HTMLElement>) => {
     const movie_id = parseInt((e.target as any).id, 10);

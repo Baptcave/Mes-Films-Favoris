@@ -11,7 +11,7 @@ function SearchAPI({ handleOneMovie }: SearchAPIProps) {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState<MovieFromIMDB[]>([]);
 
-  const key = import.meta.env.VITE_API_KEY;
+  const key = process.env.VITE_API_KEY;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
