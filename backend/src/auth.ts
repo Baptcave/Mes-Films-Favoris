@@ -1,7 +1,7 @@
 const argon2 = require("argon2");
-const { decodeJWT } = require("./helper/jwt.helper.ts");
+const { decodeJWT } = require("./helper/jwt.helper");
 import { Request, Response, NextFunction } from 'express';
-import { ITokenInfoRequest } from './types/interfaces/ITokenInfoRequest'; 
+import { ITokenInfoRequest } from './types/interfaces/ITokenInfoRequest';
 
 const hashingOptions = {
   type: argon2.argon2id,
@@ -47,8 +47,8 @@ const verifyToken = (req: ITokenInfoRequest, res: Response, next: NextFunction) 
   }
 };
 
-module.exports = { 
-  hashPassword, 
-  verifyPassword, 
-  verifyToken, 
+module.exports = {
+  hashPassword,
+  verifyPassword,
+  verifyToken,
 };

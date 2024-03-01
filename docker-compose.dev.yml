@@ -3,7 +3,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
-    container_name: mff-client
+    container_name: mff-dev-client
     environment:
       VITE_BACKEND_URL: http://localhost:8000
       VITE_API_KEY: d1195e56de3a08fa85ce12980ecb94b4
@@ -16,13 +16,13 @@ services:
       - ./frontend/vite.config.ts:/app/vite.config.ts
       - ./frontend/declaration.d.ts:/app/declaration.d.ts
     networks:
-      - mff_network
+      - dev-network
 
   server:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
-    container_name: mff-server
+    container_name: mff-dev-server
     depends_on:
       - db
     environment:
@@ -44,11 +44,11 @@ services:
       - ./backend/populateDB.ts:/app/populateDB.ts
       - ./backend/db-fixtures.sql:/app/db-fixtures.sql
     networks:
-      - mff_network
+      - dev-network
 
   db:
     image: mysql:8.3
-    container_name: mff-db
+    container_name: mff-dev-db
     environment:
       MYSQL_ROOT_PASSWORD: rootpsd
       MYSQL_USER: baptiste
@@ -60,10 +60,10 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - mff_network
+      - dev-network
 
 networks:
-  mff_network:
+  dev-network:
     driver: bridge
 
 volumes:

@@ -26,7 +26,11 @@
     "docker-up-logs": "docker compose -f docker-compose.dev.yml up --build",
     "docker-stop": "docker compose -f docker-compose.dev.yml stop",
     "docker-start": "docker compose -f docker-compose.dev.yml start",
-    "docker-down": "docker compose -f docker-compose.dev.yml down"
+    "docker-down": "docker compose -f docker-compose.dev.yml down",
+    "docker-up-build-prod": "docker compose -f docker-compose.prod.yml up --build --force-recreate",
+    "docker-build-prod": "docker compose -f docker-compose.prod.yml build --build-arg VITE_BACKEND_URL=http://localhost:8000 --build-arg VITE_API_KEY=d1195e56de3a08fa85ce12980ecb94b4",
+    "start-prod": "docker compose -f docker-compose.prod.yml up",
+    "down-prod": "docker compose -f docker-compose.prod.yml down"
   },
   "author": "Baptiste",
   "devDependencies": {

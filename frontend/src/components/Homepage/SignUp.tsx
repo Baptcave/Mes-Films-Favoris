@@ -93,7 +93,7 @@ function SignUp() {
             onChange={handleChange}
             type='password'
             name='password'
-            id='password'
+            id='sign-up-password'
             placeholder='Mot de passe'
           />
         </div>

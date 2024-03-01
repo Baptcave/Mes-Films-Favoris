@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import { UserToAPI } from "../types/UserToAPI";
 import { ValidatorResult } from "../types/ValidatorResult";
 
-const { findAll, insert } = require("../models/userHandler.ts");
-const validateUser = require("../validator/user.validator.ts");
+const { findAll, insert } = require("../models/userHandler");
+const validateUser = require("../validator/user.validator");
 
 
 const browse = async (req: Request, res: Response) => {

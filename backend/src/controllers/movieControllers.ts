@@ -3,7 +3,7 @@ import { MovieTotalFromAPI } from "../types/MovieTotalFromAPI";
 import { MovieTotalToAPI } from "../types/MovieTotalToAPI";
 import { MovieCommentToAPI } from "../types/MovieCommentToAPI";
 
-const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies } = require("../models/movieHandler.ts");
+const { insertMovieIntoMovie, insertMovieIntoUserHasMovie, findAll, update, findOne, eraseFromUserHasMovies, eraseFromMovies } = require("../models/movieHandler");
 
 const browse = async (req: Request, res: Response) => {
     try {
@@ -42,10 +42,10 @@ const add = async (req: Request, res: Response) => {
 const edit = async (req: Request, res: Response) => {
     try {
         const userHasMovieId: number = parseInt(req.params.id, 10);
-        const movieUpdate: MovieCommentToAPI & {id_movie: number} = req.body; 
+        const movieUpdate: MovieCommentToAPI & {id_movie: number} = req.body;
 
         const result = await update(movieUpdate, userHasMovieId);
-        
+
         if (result) {
             const [movie] = await findOne(movieUpdate.id_movie);
 
