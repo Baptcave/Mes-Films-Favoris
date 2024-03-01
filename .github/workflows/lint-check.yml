@@ -1,0 +1,16 @@
+name: lint-checks
+
+on:
+  pull_request:
+  workflow_call:
+
+jobs:
+  lint-check-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Install npm and deps
+        run: cd frontend && npm i
+      - name: Go to frontend and run lint-check
+        run: cd frontend && npm run lint
