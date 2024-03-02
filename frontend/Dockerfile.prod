@@ -1,0 +1,21 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+ARG VITE_BACKEND_URL
+ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
+
+ARG VITE_API_KEY
+ENV VITE_API_KEY=${VITE_API_KEY}
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+CMD npm run preview
+
+EXPOSE 3000
