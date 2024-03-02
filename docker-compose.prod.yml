@@ -1,0 +1,54 @@
+services:
+  client:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      args:
+        VITE_BACKEND_URL: http://localhost:8000
+        VITE_API_KEY: d1195e56de3a08fa85ce12980ecb94b4
+    container_name: mff-prod-client
+    ports:
+      - "3000:3000"
+    networks:
+      - prod-network
+
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: mff-prod-server
+    depends_on:
+      - db
+    environment:
+      APP_PORT: 8000
+      FRONTEND_URL: http://localhost:3000
+      JWT_SECRET: baptou47
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: baptiste
+      DB_PASSWORD: CarniBAL--18/
+      DB_NAME: films
+    ports:
+      - "8000:8000"
+    networks:
+      - prod-network
+
+  db:
+    image: mysql:8.3
+    container_name: mff-prod-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpsd
+      MYSQL_USER: baptiste
+      MYSQL_PASSWORD: CarniBAL--18/
+      MYSQL_DATABASE: films
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - prod-network
+
+networks:
+  prod-network:
+    driver: bridge
+
+volumes:
+  db-data:

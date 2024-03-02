@@ -1,4 +1,4 @@
-const db = require("./db.ts");
+const db = require("./db");
 import { UserToAPI } from "../types/UserToAPI";
 
 const findAll = async () => {
