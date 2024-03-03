@@ -8,8 +8,10 @@ const app = express();
 
 const router = require("./router");
 
+const { CORS_ALLOWED_ORIGINS } = process.env;
+
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: CORS_ALLOWED_ORIGINS?.split(","),
     credentials: true, // pour pouvoir travailler avec un token dans le header des requêtes ou des cookies
     optionsSuccessStatus: 200,
 }));
