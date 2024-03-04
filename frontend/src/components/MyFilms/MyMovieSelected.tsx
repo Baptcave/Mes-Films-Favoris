@@ -7,8 +7,14 @@ type MyMovieSelectedProps = {
 
 function MyMovieSelected({ movie }: MyMovieSelectedProps) {
   return (
-    <div className={styles.movieContainer}>
-      <div className={styles.movieCard}>
+    <div
+      className={styles.movieContainer}
+      data-t='MyMovieSelected-movieContainer'
+    >
+      <div
+        className={styles.movieCard}
+        data-t='MyMovieSelected-movieCard'
+      >
         <div className={styles.imageContainer}>
           <img
             className={styles.image}
@@ -16,11 +22,11 @@ function MyMovieSelected({ movie }: MyMovieSelectedProps) {
             alt={`image de ${movie.title_fr}`}
           />
         </div>
-        <p>Titre : {movie.title_fr}</p>
-        <p>Date de sortie : {movie.year}</p>
-        <p>Durée : {movie.length} minutes</p>
-        <p>Note imdb : {movie.imdb_note} / 10</p>
-        <p>Résumé : {movie.resume}</p>
+        <p data-t='MyMovieSelected-title'>Titre : {movie.title_fr}</p>
+        <p data-t='MyMovieSelected-year'>Date de sortie : {movie.year}</p>
+        <p data-t='MyMovieSelected-length'>Durée : {movie.length} minutes</p>
+        <p data-t='MyMovieSelected-imdb_note'>Note imdb : {movie.imdb_note} / 10</p>
+        <p data-t='MyMovieSelected-resume'>Résumé : {movie.resume}</p>
       </div>
     </div>
   );
