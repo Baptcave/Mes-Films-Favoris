@@ -1,0 +1,14 @@
+services:
+  dbTest:
+    image: mysql:8.3
+    container_name: mff-test-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpsd
+      MYSQL_USER: baptiste
+      MYSQL_PASSWORD: CarniBAL--18/
+      MYSQL_DATABASE: films
+    tmpfs: /var/lib/mysql
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"

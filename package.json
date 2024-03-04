@@ -32,7 +32,9 @@
     "start-prod": "docker compose -f docker-compose.prod.yml up",
     "down-prod": "docker compose -f docker-compose.prod.yml down",
     "frontcomptest:open": "cd ./frontend && $npm_package_config_cli run comp-test:open",
-    "frontcomptest:run": "cd ./frontend && $npm_package_config_cli run comp-test:run"
+    "frontcomptest:run": "cd ./frontend && $npm_package_config_cli run comp-test:run",
+    "frontfulltest:open": "cd ./frontend && $npm_package_config_cli run e2e-test:open",
+    "frontfulltest:run": "cd ./frontend && $npm_package_config_cli run e2e-test:run"
   },
   "author": "Baptiste",
   "devDependencies": {
