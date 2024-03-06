@@ -43,7 +43,7 @@ function Login() {
             onChange={(e) => setMail(e.target.value)}
             type='email'
             name='email'
-            id='email'
+            id='login-email'
             placeholder='mail'
           />
         </div>
