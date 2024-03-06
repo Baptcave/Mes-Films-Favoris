@@ -1,0 +1,19 @@
+name: e2e-testing
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - main
+  workflow_call:
+
+jobs:
+  test-End-to-End:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Go to frontend and install node_modules
+        run: cd frontend && npm i
+      - name: Cypress e2e run
+        run: npm run docker-frontfulltest:run

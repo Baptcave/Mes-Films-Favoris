@@ -39,7 +39,7 @@ function SignUp() {
             onChange={handleChange}
             type='text'
             name='firstname'
-            id='firstname'
+            id='signUp-firstname'
             placeholder='Prénom'
           />
         </div>
@@ -48,7 +48,7 @@ function SignUp() {
             onChange={handleChange}
             type='text'
             name='lastname'
-            id='lastname'
+            id='signUp-lastname'
             placeholder='Nom de famille'
           />
         </div>
@@ -57,7 +57,7 @@ function SignUp() {
             onChange={handleChange}
             type='number'
             name='age'
-            id='age'
+            id='signUp-age'
             placeholder='Âge'
           />
         </div>
@@ -66,7 +66,7 @@ function SignUp() {
             onChange={handleChange}
             type='text'
             name='city'
-            id='city'
+            id='signUp-city'
             placeholder='Ville'
           />
         </div>
@@ -75,7 +75,7 @@ function SignUp() {
             onChange={handleChange}
             type='text'
             name='country'
-            id='country'
+            id='signUp-country'
             placeholder='Pays'
           />
         </div>
@@ -84,7 +84,7 @@ function SignUp() {
             onChange={handleChange}
             type='mail'
             name='mail'
-            id='mail'
+            id='signUp-mail'
             placeholder='Mail'
           />
         </div>
@@ -93,7 +93,7 @@ function SignUp() {
             onChange={handleChange}
             type='password'
             name='password'
-            id='sign-up-password'
+            id='signUp-password'
             placeholder='Mot de passe'
           />
         </div>
@@ -102,13 +102,14 @@ function SignUp() {
             onChange={handleChange}
             type='password'
             name='confirm_password'
-            id='confirm_password'
+            id='signUp-confirm_password'
             placeholder='Confirmez votre mot de passe'
           />
         </div>
         <div className={styles.letGoContainer}>
           <button
             type='button'
+            id='signUpBtn'
             onClick={handleSubmit}
           >
             Let's Go
