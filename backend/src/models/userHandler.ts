@@ -3,7 +3,7 @@ import { UserToAPI } from "../types/UserToAPI";
 
 const findAll = async () => {
     try {
-        const [users] = await db.query("SELECT * FROM `user`;");
+        const [users] = await db.query("SELECT id, firstname, lastname, age, city, country, mail FROM `user`;");
 
         return users;
     } catch(e) {
