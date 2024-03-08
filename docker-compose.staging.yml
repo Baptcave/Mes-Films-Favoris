@@ -1,0 +1,49 @@
+services:
+  client_staging:
+    image: baptcave/mes-films-favoris-staging-client
+    container_name: mff-staging-client
+    ports:
+      - "3001:3000"
+    networks:
+      - staging-network
+
+  server_staging:
+    image: baptcave/mes-films-favoris-staging-server
+    container_name: mff-staging-server
+    depends_on:
+      - db_staging
+    environment:
+      APP_PORT: 8000
+      FRONTEND_URL: https://staging.mesfilmsfavoris.duckdns.org
+      JWT_SECRET: baptou47
+      DB_HOST: db_staging
+      DB_PORT: 3306
+      DB_USER: baptiste
+      DB_PASSWORD: CarniBAL--18/
+      DB_NAME: films
+      CORS_ALLOWED_ORIGINS: "https://staging.mesfilmsfavoris.duckdns.org,https://api.staging.mesfilmsfavoris.duckdns.org"
+    ports:
+      - "8001:8000"
+    networks:
+      - staging-network
+
+  db_staging:
+    image: mysql:8.3
+    container_name: mff-staging-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpsd
+      MYSQL_USER: baptiste
+      MYSQL_PASSWORD: CarniBAL--18/
+      MYSQL_DATABASE: films
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - db-data-staging:/var/lib/mysql
+    networks:
+      - staging-network
+
+networks:
+  staging-network:
+    driver: bridge
+
+volumes:
+  db-data-staging:
