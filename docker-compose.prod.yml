@@ -44,6 +44,7 @@ services:
       MYSQL_DATABASE: films
     volumes:
       - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - db-data-prod:/var/lib/mysql
     networks:
       - prod-network
 
@@ -52,4 +53,4 @@ networks:
     driver: bridge
 
 volumes:
-  db-data:
+  db-data-prod:
