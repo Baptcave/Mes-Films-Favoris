@@ -6,7 +6,7 @@ function Homepage() {
   return (
     <div className={styles.globalContainer}>
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>Mes Films Favoris</h1>
+        <h1 className={styles.title}>Mes Films Favoris maj par CD</h1>
       </div>
       <div className={styles.buttonsWrap}>
         <SignUp />
