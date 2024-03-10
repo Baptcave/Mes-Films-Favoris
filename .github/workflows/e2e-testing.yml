@@ -3,9 +3,8 @@ name: e2e-testing
 on:
   pull_request:
     branches:
-      - main
       - staging
-      - dev
+      - main
   workflow_call:
 
 jobs:
