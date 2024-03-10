@@ -1,6 +1,6 @@
 services:
   client_prod:
-    image: baptcave/mes-films-favoris-client
+    image: baptcave/mes-films-favoris-prod-client
     container_name: mff-prod-client
     ports:
       - "3000:3000"
@@ -8,7 +8,7 @@ services:
       - prod-network
 
   server_prod:
-    image: baptcave/mes-films-favoris-server
+    image: baptcave/mes-films-favoris-prod-server
     container_name: mff-prod-server
     depends_on:
       - db_prod
