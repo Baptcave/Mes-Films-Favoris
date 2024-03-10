@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm --prefix ./backend run start",
     "populate": "cd ./backend && node populateDB.ts",
-    "populate-db": "docker compose -f docker-compose.dev.yml run --rm server npm run populate",
+    "docker-populate-db": "docker compose -f docker-compose.dev.yml run --rm server npm run populate",
     "dev": "cross-env-shell 'concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"$npm_package_config_cli:dev-*\"'",
     "dev-front": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run dev\"",
     "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_glo nodemon index.ts\"",
@@ -28,7 +28,6 @@
     "docker-start": "docker compose -f docker-compose.dev.yml start",
     "docker-down": "docker compose -f docker-compose.dev.yml down",
     "docker-up-build-prod": "docker compose -f docker-compose.prod.yml up --build --force-recreate",
-    "docker-build-prod": "docker compose -f docker-compose.prod.yml build --build-arg VITE_BACKEND_URL=http://localhost:8000 --build-arg VITE_API_KEY=d1195e56de3a08fa85ce12980ecb94b4",
     "start-prod": "docker compose -f docker-compose.prod.yml up",
     "down-prod": "docker compose -f docker-compose.prod.yml down",
     "frontcomptest:open": "cd ./frontend && $npm_package_config_cli run comp-test:open",
