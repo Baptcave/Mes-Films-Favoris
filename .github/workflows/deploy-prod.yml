@@ -1,12 +1,12 @@
-name: Compile and push client and server to staging
+name: Compile and push client and server to prod
 
 on:
   push:
-    branches: ["staging"]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
-  build-and-push-server-staging:
+  build-and-push-server-prod:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -24,9 +24,9 @@ jobs:
           push: true
           context: "{{defaultContext}}:backend"
           file: "Dockerfile.prod"
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mes-films-favoris-staging-server
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mes-films-favoris-prod-server
 
-  build-and-push-client-staging:
+  build-and-push-client-prod:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -44,18 +44,18 @@ jobs:
           push: true
           context: "{{defaultContext}}:frontend"
           file: "Dockerfile.prod"
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mes-films-favoris-staging-client
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mes-films-favoris-prod-client
           build-args: |
-            VITE_BACKEND_URL=https://api.staging.mesfilmsfavoris.duckdns.org
+            VITE_BACKEND_URL=https://api.mesfilmsfavoris.duckdns.org
             VITE_API_KEY=${{ secrets.VITE_API_KEY }}
 
   notify:
     needs:
-      - build-and-push-server-staging
-      - build-and-push-client-staging
+      - build-and-push-server-prod
+      - build-and-push-client-prod
     runs-on: ubuntu-latest
     steps:
-      - name: Call VPS webhook to update staging
+      - name: Call VPS webhook to update prod
         uses: wei/curl@master
         with:
-          args: https://ops.mesfilmsfavoris.duckdns.org/hooks/update-staging
+          args: https://ops.mesfilmsfavoris.duckdns.org/hooks/update-prod
